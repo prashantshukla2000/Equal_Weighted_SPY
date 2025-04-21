@@ -4,6 +4,7 @@ import yfinance as yf
 import math
 
 # Read the list of S&P 500 stocks
+# Change the source repository as per your file location.
 stocks = pd.read_csv(r"C:\Users\MAA\Desktop\pATTERSON\My projects\Equal_weight\algorithmic-trading-python\starter_files\sp_500_stocks.csv")
 
 # Define columns for final DataFrame
@@ -83,7 +84,7 @@ with pd.ExcelWriter(excel_file_path, engine='xlsxwriter') as writer:
         'border': 1
     })
 
-    # Define format mapping for each column
+# Define format mapping for each column
     column_formats = {
         'A': ['Ticker', string_format],
         'B': ['Stock Price', dollar_format],
@@ -91,7 +92,7 @@ with pd.ExcelWriter(excel_file_path, engine='xlsxwriter') as writer:
         'D': ['Number of Shares to Buy', integer_format]
     }
 
-    # Apply formatting and set column widths
+# Apply formatting and set column widths
     for column in column_formats.keys():
         worksheet.set_column(f'{column}:{column}', 20, column_formats[column][1])
         worksheet.write(f'{column}1', column_formats[column][0], column_formats[column][1])
@@ -99,4 +100,4 @@ with pd.ExcelWriter(excel_file_path, engine='xlsxwriter') as writer:
 
 #  Message
 
-print(f"\n✅ Recommended trades saved successfully at:\n{excel_file_path}")
+print(f"\n Recommended trades saved successfully at:\n{excel_file_path}")
